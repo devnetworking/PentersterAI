@@ -1,25 +1,22 @@
-from mistralai.client import MistralClient  # API officielle
-from mistralai.models.chat_completion import ChatMessage
+# core/ia.py
 
-class IAAssistant:
-    def __init__(self, api_key=None, local=False):
-        self.local = local
-        if not local:
-            self.client = MistralClient(api_key=api_key)
-        # Note: Pour Ollama, on utilise directement `requests`
+from mistralai.client import MistralClient
+from config import MISTRAL_API_KEY
 
-    def generate_payload(self, techno, vuln_type):
-        prompt = f"Génère un payload {vuln_type} pour {techno} (contournement de WAF)"
-        if self.local:
-            import requests
-            response = requests.post(
-                "http://localhost:11434/api/generate",
-                json={"model": "mistral", "prompt": prompt}
-            )
-            return response.json()["response"]
-        else:
-            response = self.client.chat(
-                model="mistral-tiny",
-                messages=[ChatMessage(role="user", content=prompt)]
-            )
-            return response.choices[0].message.content
+class IAGenerator:
+    def __init__(self):
+        self.client = MistralClient(api_key=MISTRAL_API_KEY)
+
+    def generate_payload(self, prompt: str) -> str:
+        response = self.client.chat(
+            model="mistral-medium",
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response.choices[0].message.content
+
+    def generate_report(self, findings: str) -> str:
+        prompt = f"Génère un rapport structuré pour ces résultats : {findings}"
+        return self.generate_payload(prompt)
+

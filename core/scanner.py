@@ -1,19 +1,23 @@
-import nmap
-import requests
-from bs4 import BeautifulSoup
+import subprocess
+from urllib.parse import urlparse
 
-class NetworkScanner:
-    def run(self, target):
-        print(f"[*] Scanning réseau de {target}...")
-        nm = nmap.PortScanner()
-        nm.scan(hosts=target, arguments="-sV --script vulners")
-        for host in nm.all_hosts():
-            print(f"Ports ouverts : {nm[host].all_tcp()}")
+class Scanner:
+    def __init__(self, target: str):
+        self.target = target
 
-class WebScanner:
-    def run(self, target):
-        print(f"[*] Analyse web de {target}...")
-        response = requests.get(target)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        forms = soup.find_all('form')
-        print(f"{len(forms)} formulaires trouvés !")
+    def clean_target_for_nmap(self):
+        parsed = urlparse(self.target)
+        if parsed.scheme:
+            return parsed.hostname
+        return self.target
+
+    def run_nmap_scan(self):
+        cleaned_target = self.clean_target_for_nmap()
+        command = ["nmap", "-sV", "-O", cleaned_target]
+        result = subprocess.run(command, capture_output=True, text=True)
+        return result.stdout
+
+    def run_web_scan(self):
+        command = ["curl", "-I", self.target]
+        result = subprocess.run(command, capture_output=True, text=True)
+        return result.stdout

@@ -1,6 +1,15 @@
-import requests
+import re
 
-def is_vulnerable(target, payload):
-    test_url = f"{target}/login.php?query={payload}"
-    response = requests.get(test_url)
-    return "error" in response.text.lower()  # Détection basique
+class Validator:
+    @staticmethod
+    def is_valid_ip(ip: str) -> bool:
+        pattern = re.compile(r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$")
+        return bool(pattern.match(ip))
+
+    @staticmethod
+    def is_valid_url(url: str) -> bool:
+        pattern = re.compile(
+            r"^(http://|https://)"
+            r"(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(/|/\S+)?$"
+        )
+        return bool(pattern.match(url))
