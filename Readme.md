@@ -61,7 +61,7 @@ MISTRAL\_API\_KEY=votre\_clé\_api\_ici
 
 ## Structure du projet
 ----------------------
-
+```Markdown
 pentesterai/
 ├── core/
 │   ├── scanner.py       # Modules de scan
@@ -72,7 +72,7 @@ pentesterai/
 ├── cli.py               # Interface principale
 ├── config.py            # Configuration
 └── requirements.txt     # Dépendances
-    
+```
 
 ## Avertissement
 ----------------
