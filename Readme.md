@@ -50,17 +50,14 @@ MISTRAL\_API\_KEY=votre\_clé\_api\_ici
 
 ### Options disponibles
 
-|Option| Description|
+| Option         | Description                                  |
+|----------------|----------------------------------------------|
+| `--target`, `-t`   | URL ou IP cible (**requis**)               |
+| `--mode`, `-m`     | Mode de scan (`full`/`light`, défaut : `full`) |
+| `--save`, `-s`     | Sauvegarder le résultat dans `rapports/`        |
+| `--report`, `-r`   | Générer un rapport Markdown automatiquement     |
+| `--json`, `-j`     | Exporter le résultat en JSON                     |
 
-|\--target, -t|URL ou IP cible (requis)|
-
-|\--mode, -m| Mode de scan (full/light, défaut: full)|
-
-|\--save, -s|Sauvegarder le résultat dans rapports/|
-
-|\--report, -r|Générer un rapport Markdown|
-
-|\--json, -j|Exporter en JSON|
 
 ## Structure du projet
 ----------------------
