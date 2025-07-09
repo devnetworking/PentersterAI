@@ -1,5 +1,3 @@
-  PentesterAI - Documentation body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; } h1, h2, h3 { color: #2c3e50; } code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: 'Courier New', Courier, monospace; } pre { background-color: #f8f8f8; padding: 15px; border-radius: 5px; overflow-x: auto; } .command { background-color: #2c3e50; color: white; padding: 10px; border-radius: 5px; margin: 10px 0; } .note { background-color: #e7f5fe; border-left: 4px solid #3498db; padding: 10px; margin: 10px 0; } .warning { background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 10px; margin: 10px 0; }
-
 # PentesterAI
 ===========
 
