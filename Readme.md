@@ -22,10 +22,10 @@ Un outil de test d'intrusion piloté par IA pour les professionnels de la cybers
 ---------------
 
 ```bash
-git clone https://github.com/votreuser/PentesterAI.git
+git clone https://github.com/devnetworking/PentesterAI.git
 cd PentesterAI
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
+source venv/bin/activate 
 pip install -r requirements.txt
 ```
 
@@ -50,29 +50,17 @@ MISTRAL\_API\_KEY=votre\_clé\_api\_ici
 
 ### Options disponibles
 
-Option
+|Option| Description|
 
-Description
+|\--target, -t|URL ou IP cible (requis)|
 
-\--target, -t
+|\--mode, -m| Mode de scan (full/light, défaut: full)|
 
-URL ou IP cible (requis)
+|\--save, -s|Sauvegarder le résultat dans rapports/|
 
-\--mode, -m
+|\--report, -r|Générer un rapport Markdown|
 
-Mode de scan (full/light, défaut: full)
-
-\--save, -s
-
-Sauvegarder le résultat dans rapports/
-
-\--report, -r
-
-Générer un rapport Markdown
-
-\--json, -j
-
-Exporter en JSON
+|\--json, -j|Exporter en JSON|
 
 ## Structure du projet
 ----------------------
